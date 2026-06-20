@@ -1342,11 +1342,8 @@ And waiting 17 years until find the one</em></blockquote>
   <script>
     (function() {
       const GET_STATS_URL = 'https://wanderlog-stats-d4fnpamqed206c68-1445354193.ap-shanghai.app.tcloudbase.com/getStats';
-      let kiroLoaded = false;
 
       function loadKiroStats() {
-        if (kiroLoaded) return;
-        kiroLoaded = true;
 
         fetch(GET_STATS_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
           .then(r => r.json())
