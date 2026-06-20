@@ -1375,7 +1375,7 @@ And waiting 17 years until find the one</em></blockquote>
                 '<td style="padding:0.5rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCheckIns || 0) + '</td>' +
                 '<td style="padding:0.5rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCities || 0) + '</td>' +
                 '<td style="padding:0.5rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCountries || 0) + '</td>' +
-                '<td style="padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.7rem;">' + (u.platform === 'ios' ? '🍎' : '🤖') + '</td>' +
+                '<td style="padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.7rem;">' + (u.platform === 'ios' ? '苹果' : (u.deviceBrand || '安卓')) + '</td>' +
                 '</tr>';
             });
 
