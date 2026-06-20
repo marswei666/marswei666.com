@@ -1371,11 +1371,11 @@ And waiting 17 years until find the one</em></blockquote>
             sorted.forEach((u, i) => {
               html += '<tr>' +
                 '<td style="font-family:var(--font-serif);font-weight:700;font-size:0.85rem;color:var(--accent);padding:0.5rem;border-bottom:1px solid var(--border);width:30px;">' + (i + 1) + '</td>' +
-                '<td style="padding:0.5rem;border-bottom:1px solid var(--border);font-weight:500;font-size:0.8rem;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + (u.userName || '匿名用户') + '</td>' +
+                '<td style="padding:0.5rem;border-bottom:1px solid var(--border);font-weight:500;font-size:0.8rem;max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + (u.userName || '匿名用户') + '</td>' +
                 '<td style="padding:0.5rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCheckIns || 0) + '</td>' +
                 '<td style="padding:0.5rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCities || 0) + '</td>' +
                 '<td style="padding:0.5rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCountries || 0) + '</td>' +
-                '<td style="padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.7rem;">' + (u.platform === 'ios' ? '苹果' : (u.deviceBrand || '安卓')) + '</td>' +
+                '<td style="padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.7rem;white-space:nowrap;">' + (u.platform === 'ios' ? '苹果' : (u.deviceBrand || '安卓')) + '</td>' +
                 '</tr>';
             });
 
