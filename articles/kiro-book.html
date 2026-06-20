@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiro Book — 全球探店电子手账 | MarsWei</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    html, body {
+      overflow: auto !important;
+      height: auto !important;
+    }
+    .article-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 249, 247, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .article-nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .back-link {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    .article-page { padding-top: 100px; padding-bottom: 6rem; min-height: 100vh; overflow: auto; }
+    .article-header { margin-bottom: 3rem; }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.05em;
+    }
+    .article-meta .tag { color: var(--accent); text-transform: uppercase; }
+    .article-page h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .article-lead {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      font-style: italic;
+      line-height: 1.8;
+      border-left: 3px solid var(--accent-light);
+      padding-left: 1.2rem;
+      margin: 2rem 0;
+    }
+    .article-body {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 2;
+    }
+    .article-body p + p { margin-top: 1.5rem; }
+    .article-body h2 {
+      font-size: 1.3rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--ink);
+    }
+
+    /* Kiro Book Stats Section */
+    .stats-section {
+      margin: 3rem 0;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, #F2EDE4 0%, #FAF8F5 100%);
+      border-radius: 20px;
+      text-align: center;
+    }
+    .stats-section h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.8);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      margin-top: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .stats-user {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-top: 1rem;
+    }
+    .stats-user strong {
+      color: var(--ink);
+    }
+
+    /* Leaderboard */
+    .leaderboard {
+      margin: 3rem 0;
+    }
+    .leaderboard h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .leaderboard-table th {
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.8rem 1rem;
+      border-bottom: 2px solid var(--border);
+      text-align: left;
+    }
+    .leaderboard-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+    }
+    .leaderboard-table tr:last-child td { border-bottom: none; }
+    .leaderboard-table .rank {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      width: 40px;
+    }
+    .leaderboard-table .user-name {
+      font-weight: 500;
+    }
+    .leaderboard-table .stat-cell {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 700;
+    }
+
+    .loading-text {
+      text-align: center;
+      color: var(--ink-muted);
+      font-style: italic;
+      padding: 2rem;
+    }
+
+    /* App Store badge */
+    .app-badge {
+      display: inline-block;
+      margin-top: 2rem;
+    }
+    .app-badge img {
+      height: 48px;
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid { gap: 0.8rem; }
+      .stat-number { font-size: 1.8rem; }
+      .leaderboard-table { font-size: 0.8rem; }
+      .leaderboard-table th, .leaderboard-table td { padding: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="article-nav">
+    <div class="article-nav-inner">
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        MarsWei
+      </a>
+    </div>
+  </nav>
+
+  <div class="article-page">
+    <div class="container">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="tag">产品</span>
+          <span>2026年6月20日</span>
+        </div>
+        <h1>Kiro Book — 全球探店电子手账</h1>
+      </header>
+
+      <p class="article-lead">
+        一个为环球旅行者打造的探店记录工具。每到一座城市，打卡一家咖啡馆、书店、博物馆或买手店，用照片和文字留下属于自己的旅行记忆。
+      </p>
+
+      <div class="article-body">
+        <p>
+          做这个 App 的原因很简单：我去过很多国家和城市，每到一个地方都会打卡好看的咖啡店、书店、博物馆、美术馆、买手店。手机里拍过很多照片，但没有一个平台能完全承载这些记录。
+        </p>
+        <p>
+          有些人喜欢喝酒，还可以加上 Bar。总之就是泛探店类的，不局限于咖啡赛道。Kiro Book 是一个电子手账，支持自定义类型分类、地图定位、照片管理、多语言切换，所有数据仅保存在本地设备，完全离线可用。
+        </p>
+
+        <h2>App 功能</h2>
+        <p>
+          ✦ 日历视图，按月查看打卡记录<br>
+          ✦ 地图模式，标记全球探店足迹<br>
+          ✦ 品类收藏，按类型/国家/收藏筛选<br>
+          ✦ 自定义类型，长按编辑排序<br>
+          ✦ 照片拖拽排序，EXIF 自动定位<br>
+          ✦ 五种语言：中文、English、日本語、한국어、繁體中文
+        </p>
+      </div>
+
+      <!-- Stats from CloudBase -->
+      <div class="stats-section">
+        <h3>✦ 实时数据</h3>
+        <div id="statsContainer">
+          <p class="loading-text">加载中...</p>
+        </div>
+      </div>
+
+      <!-- Leaderboard -->
+      <div class="leaderboard">
+        <h3>✦ 用户排行</h3>
+        <div id="leaderboardContainer">
+          <p class="loading-text">加载中...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const GET_STATS_URL = 'https://wanderlog-stats-d4fnpamqed206c68-1445354193.ap-shanghai.app.tcloudbase.com/getStats';
+
+    async function loadStats() {
+      const statsContainer = document.getElementById('statsContainer');
+      const leaderboardContainer = document.getElementById('leaderboardContainer');
+
+      try {
+        const res = await fetch(GET_STATS_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+        const json = await res.json();
+        console.log('API response:', json);
+
+        let users = [];
+        if (json.body && typeof json.body === 'string') {
+          const parsed = JSON.parse(json.body);
+          users = parsed.data || [];
+        } else if (json.body && json.body.data) {
+          users = json.body.data;
+        } else if (json.data) {
+          users = json.data;
+        }
+        console.log('Users:', users);
+
+        if (users.length === 0) {
+          statsContainer.innerHTML = '<p class="loading-text">暂无数据</p>';
+          leaderboardContainer.innerHTML = '<p class="loading-text">暂无数据</p>';
+          return;
+        }
+
+        // Aggregate stats
+        const totalCheckIns = users.reduce((s, u) => s + (u.totalCheckIns || 0), 0);
+        const totalCities = users.reduce((s, u) => s + (u.totalCities || 0), 0);
+
+        statsContainer.innerHTML = `
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">${totalCheckIns}</div>
+              <div class="stat-label">打卡总数</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${totalCities}</div>
+              <div class="stat-label">城市</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${users.length}</div>
+              <div class="stat-label">用户</div>
+            </div>
+          </div>
+          <p class="stats-user">共 <strong>${users.length}</strong> 位旅行者在使用 Kiro Book</p>
+        `;
+
+        // Leaderboard
+        const sorted = [...users].sort((a, b) => (b.totalCheckIns || 0) - (a.totalCheckIns || 0));
+        let tableHTML = `
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>旅行者</th>
+                <th style="text-align:center">打卡</th>
+                <th style="text-align:center">城市</th>
+                <th style="text-align:center">国家</th>
+                <th>平台</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        sorted.forEach((user, i) => {
+          tableHTML += `
+            <tr>
+              <td class="rank">${i + 1}</td>
+              <td class="user-name">${user.userName || '匿名用户'}</td>
+              <td class="stat-cell">${user.totalCheckIns || 0}</td>
+              <td class="stat-cell">${user.totalCities || 0}</td>
+              <td class="stat-cell">${user.totalCountries || 0}</td>
+              <td>${user.platform === 'ios' ? '🍎 iOS' : '🤖 Android'}</td>
+            </tr>
+          `;
+        });
+
+        tableHTML += '</tbody></table>';
+        leaderboardContainer.innerHTML = tableHTML;
+
+      } catch (err) {
+        console.error('Load stats error:', err);
+        statsContainer.innerHTML = '<p class="loading-text">数据加载失败</p>';
+        leaderboardContainer.innerHTML = '<p class="loading-text">数据加载失败</p>';
+      }
+    }
+
+    loadStats();
+  </script>
+
+</body>
+</html>

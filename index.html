@@ -85,7 +85,12 @@
     <nav class="sidebar-articles">
       <div class="articles-section-label">Writing</div>
 
-      <div class="article-item active" data-article="21">
+      <div class="article-item active" data-article="22">
+        <div class="article-item-title">Kiro Book — 全球探店电子手账</div>
+        <div class="article-item-date">2026 · 06 · 20</div>
+      </div>
+
+      <div class="article-item" data-article="21">
         <div class="article-item-title">Shi Hanbing: Investment Trends Under a Global Perspective</div>
         <div class="article-item-date">2026 · 05 · 04</div>
       </div>
@@ -351,8 +356,68 @@
       </div>
     </article>
 
+    <!-- Kiro Book -->
+    <article class="article-view active" data-article="22">
+      <div class="article-view-meta">
+        <span class="article-view-date">June 20, 2026</span>
+      </div>
+
+      <h1>Kiro Book — 全球探店电子手账</h1>
+
+      <p class="article-lead">
+        一个为环球旅行者打造的探店记录工具。每到一座城市，打卡一家咖啡馆、书店、博物馆或买手店，用照片和文字留下属于自己的旅行记忆。
+      </p>
+
+      <div class="article-body">
+        <p>
+          做这个 App 的原因很简单：我去过很多国家和城市，每到一个地方都会打卡好看的咖啡店、书店、博物馆、美术馆、买手店。手机里拍过很多照片，但没有一个平台能完全承载这些记录。
+        </p>
+        <p>
+          有些人喜欢喝酒，还可以加上 Bar。总之就是泛探店类的，不局限于咖啡赛道。Kiro Book 是一个电子手账，支持自定义类型分类、地图定位、照片管理、多语言切换，所有数据仅保存在本地设备，完全离线可用。
+        </p>
+
+        <h2>App 功能</h2>
+        <p>
+          ✦ 日历视图，按月查看打卡记录<br>
+          ✦ 地图模式，标记全球探店足迹<br>
+          ✦ 品类收藏，按类型/国家/收藏筛选<br>
+          ✦ 自定义类型，长按编辑排序<br>
+          ✦ 照片拖拽排序，EXIF 自动定位<br>
+          ✦ 五种语言：中文、English、日本語、한국어、繁體中文
+        </p>
+
+        <div style="margin:2.5rem 0;padding:2rem;background:linear-gradient(135deg,#F2EDE4,#FAF8F5);border-radius:20px;text-align:center;">
+          <h3 style="font-family:var(--font-serif);font-size:1rem;color:var(--ink-muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">✦ 实时数据</h3>
+          <div id="kiroStatsCards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;">
+            <div style="background:rgba(255,255,255,0.8);border-radius:16px;padding:1.2rem 0.8rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+              <div id="kiroTotalCheckins" style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--ink);">-</div>
+              <div style="font-size:0.7rem;color:var(--ink-muted);margin-top:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">打卡总数</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.8);border-radius:16px;padding:1.2rem 0.8rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+              <div id="kiroTotalCities" style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--ink);">-</div>
+              <div style="font-size:0.7rem;color:var(--ink-muted);margin-top:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">城市</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.8);border-radius:16px;padding:1.2rem 0.8rem;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+              <div id="kiroTotalUsers" style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--ink);">-</div>
+              <div style="font-size:0.7rem;color:var(--ink-muted);margin-top:0.4rem;letter-spacing:0.1em;text-transform:uppercase;">用户</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin:2.5rem 0;padding:2rem;background:linear-gradient(135deg,#F2EDE4,#FAF8F5);border-radius:20px;">
+          <h2 style="text-align:center;margin-top:0;">用户排行</h2>
+          <div id="kiroLeaderboard" style="max-height:1600px;overflow-y:auto;">
+            <p style="text-align:center;color:var(--ink-muted);font-style:italic;padding:1rem;">加载中...</p>
+          </div>
+        </div>
+
+        <br/><br/><br/><br/><br/>
+
+      </div>
+    </article>
+
     <!-- Article 20 -->
-    <article class="article-view active" data-article="21">
+    <article class="article-view" data-article="21">
       <div class="article-view-meta">
         <span class="article-view-date">May 4, 2026</span>
       </div>
@@ -1274,5 +1339,63 @@ And waiting 17 years until find the one</em></blockquote>
   </div><!-- /.content-area -->
 
   <script src="js/main.js?v=5"></script>
+  <script>
+    (function() {
+      const GET_STATS_URL = 'https://wanderlog-stats-d4fnpamqed206c68-1445354193.ap-shanghai.app.tcloudbase.com/getStats';
+      let kiroLoaded = false;
+
+      function loadKiroStats() {
+        if (kiroLoaded) return;
+        kiroLoaded = true;
+
+        fetch(GET_STATS_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+          .then(r => r.json())
+          .then(json => {
+            const users = json.data || [];
+            if (users.length === 0) return;
+
+            const totalCheckIns = users.reduce((s, u) => s + (u.totalCheckIns || 0), 0);
+            const totalCities = users.reduce((s, u) => s + (u.totalCities || 0), 0);
+
+            document.getElementById('kiroTotalCheckins').textContent = totalCheckIns;
+            document.getElementById('kiroTotalCities').textContent = totalCities;
+            document.getElementById('kiroTotalUsers').textContent = users.length;
+
+            const sorted = [...users].sort((a, b) => (b.totalCheckIns || 0) - (a.totalCheckIns || 0));
+            let html = '<table style="width:100%;border-collapse:collapse;font-size:0.9rem;"><thead><tr>' +
+              '<th style="font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:2px solid var(--border);text-align:left;">#</th>' +
+              '<th style="font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:2px solid var(--border);text-align:left;">旅行者</th>' +
+              '<th style="font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:2px solid var(--border);text-align:center;">📍 打卡</th>' +
+              '<th style="font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:2px solid var(--border);text-align:center;">🏙️ 城市</th>' +
+              '<th style="font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:2px solid var(--border);text-align:center;">🌍 国家</th>' +
+              '<th style="font-size:0.7rem;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:2px solid var(--border);text-align:left;">平台</th>' +
+              '</tr></thead><tbody>';
+
+            sorted.forEach((u, i) => {
+              html += '<tr>' +
+                '<td style="font-family:var(--font-serif);font-weight:700;font-size:1.1rem;color:var(--accent);padding:1rem;border-bottom:1px solid var(--border);width:40px;">' + (i + 1) + '</td>' +
+                '<td style="padding:1rem;border-bottom:1px solid var(--border);font-weight:500;">' + (u.userName || '匿名用户') + '</td>' +
+                '<td style="padding:1rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCheckIns || 0) + '</td>' +
+                '<td style="padding:1rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCities || 0) + '</td>' +
+                '<td style="padding:1rem;border-bottom:1px solid var(--border);text-align:center;font-family:var(--font-serif);font-weight:700;">' + (u.totalCountries || 0) + '</td>' +
+                '<td style="padding:1rem;border-bottom:1px solid var(--border);">' + (u.platform === 'ios' ? '🍎 iOS' : '🤖 Android') + '</td>' +
+                '</tr>';
+            });
+
+            html += '</tbody></table>';
+            document.getElementById('kiroLeaderboard').innerHTML = html;
+          })
+          .catch(() => {
+            document.getElementById('kiroLeaderboard').innerHTML = '<p style="text-align:center;color:var(--ink-muted);">数据加载失败</p>';
+          });
+      }
+
+      document.querySelectorAll('[data-article="22"]').forEach(el => {
+        el.addEventListener('click', loadKiroStats);
+      });
+      const active = document.querySelector('[data-article="22"].active');
+      if (active) loadKiroStats();
+    })();
+  </script>
 </body>
 </html>
