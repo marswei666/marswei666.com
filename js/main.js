@@ -47,7 +47,8 @@ function initArticles() {
   backBtn.addEventListener('click', goBack);
 
   const initialActive = document.querySelector('.sidebar-articles .article-item.active[data-article]');
-  if (isMobile() && initialActive) {
+  const shouldOpenActiveOnMobile = location.pathname.endsWith('/index.html');
+  if (isMobile() && initialActive && shouldOpenActiveOnMobile) {
     document.body.classList.add('show-article');
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
