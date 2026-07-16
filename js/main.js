@@ -4,7 +4,7 @@ function isMobile() {
 }
 
 function initArticles() {
-  const items = document.querySelectorAll('.sidebar-articles .article-item');
+  const items = document.querySelectorAll('.sidebar-articles .article-item[data-article]');
   const views = document.querySelectorAll('.main .article-view');
   const main  = document.querySelector('.main');
   const backBtn = document.getElementById('backBtn');

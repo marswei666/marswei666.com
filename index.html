@@ -54,7 +54,7 @@
   <!-- ===== Sidebar ===== -->
   <aside class="sidebar">
     <div class="sidebar-header">
-      <div class="site-name">MarsWei</div>
+      <div class="site-name"><img class="marswei-avatar" src="image/marswei-avatar.png" alt="" /> MarsWei</div>
 
       <div class="bio-tagline">An Earth story collector</div>
 
@@ -83,9 +83,16 @@
 
     <!-- Article list -->
     <nav class="sidebar-articles">
-      <div class="articles-section-label">Writing</div>
+      <div class="articles-section-label"><img class="section-label-icon" src="image/kiro-app-icon.png" alt="" /> App</div>
 
-      <div class="article-item active" data-article="22">
+      <div class="article-item active" data-article="app-download">
+        <div class="article-item-title">Kiro Book — Global Tag App</div>
+        <div class="article-item-date">iOS · Google Play · China APK</div>
+      </div>
+
+      <div class="articles-section-label writing-label"><span class="section-label-icon writing-icon" aria-hidden="true">✎</span> Writing</div>
+
+      <div class="article-item" data-article="22">
         <div class="article-item-title">Kiro Book — 全球探店电子手账</div>
         <div class="article-item-date">2026 · 06 · 20</div>
       </div>
@@ -192,6 +199,103 @@
   <!-- ===== Main Content ===== -->
   <main class="main">
     <button class="back-btn" id="backBtn">← Writing</button>
+
+    <!-- Kiro Book Download -->
+    <article class="article-view app-download-view active" data-article="app-download">
+      <div class="app-download-hero">
+        <div>
+          <div class="article-view-meta">
+            <span class="article-view-tag">APP</span>
+            <span class="article-view-date">Version 1.1.2</span>
+          </div>
+          <div class="app-title-row">
+            <img class="kiro-app-icon" src="image/kiro-app-icon.png" alt="Kiro Book app icon" />
+            <h1>Kiro Book</h1>
+          </div>
+          <p class="article-lead">
+            A travel journal for cafes, bookstores, museums, galleries, select shops, bars, and the small places worth remembering. The idea for this app came from a coffee chat between Mars and Minani at Waseda University.
+          </p>
+          <div class="app-download-actions">
+            <a class="app-download-btn primary" href="https://apps.apple.com/us/app/kiro-book/id6760916222" target="_blank" rel="noopener">App Store</a>
+            <a class="app-download-btn" href="https://play.google.com/store/apps/details?id=com.minami_studio.kiro" target="_blank" rel="noopener">Google Play Closed Test</a>
+            <a class="app-download-btn" href="downloads/KiroBook-release-1.1.2.apk" download>中国区 APK</a>
+          </div>
+        </div>
+        <div class="screenshot-stack" aria-label="Kiro Book screenshots preview">
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-1.jpg" alt="Kiro Book map screen" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-2.jpg" alt="Kiro Book Asia map screen" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-3.jpg" alt="Kiro Book Europe map screen" />
+        </div>
+      </div>
+
+      <div class="app-download-grid">
+        <section class="app-download-card">
+          <h2>App Store</h2>
+          <p>For iPhone and iPad users. Scan the QR code or click the button to open the App Store page.</p>
+          <img class="app-qr" src="image/kiro-app-store-qr.png" alt="App Store QR" />
+          <a class="app-card-link" href="https://apps.apple.com/us/app/kiro-book/id6760916222" target="_blank" rel="noopener">Open App Store</a>
+        </section>
+
+        <section class="app-download-card">
+          <h2>Google Play</h2>
+          <p>Closed Test only.<br>Scan or open the test link.<br>Contact the developer for access.</p>
+          <img class="app-qr" src="image/kiro-google-play-qr.png" alt="Google Play Closed Test QR" />
+          <a class="app-card-link" href="https://play.google.com/store/apps/details?id=com.minami_studio.kiro" target="_blank" rel="noopener">Open Test Link</a>
+        </section>
+
+        <section class="app-download-card">
+          <h2>中国区APK</h2>
+          <p>中国区 Android 用户可直接下载。<br>下载后打开 APK 完成安装。<br>如系统提示，请允许安装未知来源应用。</p>
+          <img class="app-qr" src="image/kiro-apk-qr.png" alt="Android APK QR" />
+          <a class="app-card-link" href="downloads/KiroBook-release-1.1.2.apk" download>下载 APK</a>
+        </section>
+      </div>
+
+      <section class="screenshot-section" aria-labelledby="apple-screenshots-title">
+        <h2 id="apple-screenshots-title">Apple App Screenshots</h2>
+        <div class="screenshot-strip" aria-label="Kiro Book Apple screenshots from 1 to 8">
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-8.jpg" alt="Kiro Book Apple screenshot 8" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-1.jpg" alt="Kiro Book Apple screenshot 1" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-2.jpg" alt="Kiro Book Apple screenshot 2" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-3.jpg" alt="Kiro Book Apple screenshot 3" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-4.jpg" alt="Kiro Book Apple screenshot 4" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-5.jpg" alt="Kiro Book Apple screenshot 5" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-6.jpg" alt="Kiro Book Apple screenshot 6" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-7.jpg" alt="Kiro Book Apple screenshot 7" />
+        </div>
+      </section>
+
+      <section class="screenshot-section" aria-labelledby="screenshots-title">
+        <h2 id="screenshots-title">Google App Screenshots</h2>
+        <div class="screenshot-strip" aria-label="Kiro Book screenshots from 1 to 9">
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-1.jpg" alt="Kiro Book screenshot 1" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-2.jpg" alt="Kiro Book screenshot 2" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-3.jpg" alt="Kiro Book screenshot 3" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-4.jpg" alt="Kiro Book screenshot 4" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-5.jpg" alt="Kiro Book screenshot 5" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-6.jpg" alt="Kiro Book screenshot 6" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-7.jpg" alt="Kiro Book screenshot 7" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-8.jpg" alt="Kiro Book screenshot 8" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-9.jpg" alt="Kiro Book screenshot 9" />
+        </div>
+      </section>
+
+      <div class="app-info-grid">
+        <section class="app-story-panel">
+          <h2>Story</h2>
+          <p>
+            Kiro Book was built by a traveler who speaks four languages, Chinese · English · Français · 日本語, reads across cultures, and has spent three years moving through the world. It comes from a love for Earth itself: the cities, books, cafes, museums, streets, and people that make each journey worth remembering.
+          </p>
+          <p>
+            Before the journey, I studied in Beijing and Paris, then worked in China&apos;s internet industry at Huawei and Tencent. Those years taught me to look at systems, products, and people with patience: how cities grow, how tools shape daily life, and how small personal records can become a map of memory.
+          </p>
+          <p>
+            My curiosity has always moved across disciplines: society, religion, philosophy, probability, film, music, books, and nature. Kiro Book is a quiet attempt to bring those interests back to the ground, one place at a time.
+          </p>
+        </section>
+      </div>
+      <div class="story-bottom-spacer" aria-hidden="true"></div>
+    </article>
 
     <!-- Article 3 -->
     <article class="article-view" data-article="3">
@@ -357,7 +461,7 @@
     </article>
 
     <!-- Kiro Book -->
-    <article class="article-view active" data-article="22">
+    <article class="article-view" data-article="22">
       <div class="article-view-meta">
         <span class="article-view-date">June 20, 2026</span>
       </div>
@@ -1394,5 +1498,58 @@ And waiting 17 years until find the one</em></blockquote>
       if (active) loadKiroStats();
     })();
   </script>
+
+<script>
+  (function() {
+    function initScreenshotLightbox() {
+      const screenshots = document.querySelectorAll('.zoomable-screenshot');
+      if (!screenshots.length || document.querySelector('.screenshot-lightbox')) return;
+
+      const lightbox = document.createElement('div');
+      lightbox.className = 'screenshot-lightbox';
+      lightbox.setAttribute('role', 'dialog');
+      lightbox.setAttribute('aria-modal', 'true');
+      lightbox.setAttribute('aria-label', 'App screenshot preview');
+      lightbox.innerHTML = '<button type="button" aria-label="Close screenshot preview">×</button><img alt="Expanded app screenshot" />';
+      document.body.appendChild(lightbox);
+
+      const image = lightbox.querySelector('img');
+      const closeBtn = lightbox.querySelector('button');
+
+      function open(src, alt) {
+        image.src = src;
+        image.alt = alt || 'Expanded app screenshot';
+        lightbox.classList.add('open');
+        closeBtn.focus();
+      }
+
+      function close() {
+        lightbox.classList.remove('open');
+        image.removeAttribute('src');
+      }
+
+      screenshots.forEach(img => {
+        img.addEventListener('click', () => open(img.src, img.alt));
+        img.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            open(img.src, img.alt);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', close);
+      lightbox.addEventListener('click', event => {
+        if (event.target === lightbox) close();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && lightbox.classList.contains('open')) close();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initScreenshotLightbox);
+  })();
+</script>
+
 </body>
 </html>
