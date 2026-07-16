@@ -64,21 +64,6 @@ function initArticles() {
     }
   });
 
-  // Mobile swipe to go back
-  let touchStartX = 0;
-  let touchStartY = 0;
-
-  document.addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  document.addEventListener('touchend', e => {
-    if (!document.body.classList.contains('show-article')) return;
-    const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
-    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
-    if (dx > 60 && dy < 80) goBack();
-  }, { passive: true });
 }
 
 document.addEventListener('DOMContentLoaded', initArticles);
