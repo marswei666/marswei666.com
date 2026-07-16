@@ -46,6 +46,12 @@ function initArticles() {
 
   backBtn.addEventListener('click', goBack);
 
+  const initialActive = document.querySelector('.sidebar-articles .article-item.active[data-article]');
+  if (isMobile() && initialActive) {
+    document.body.classList.add('show-article');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
   // Browser native back button / Android back button
   window.addEventListener('popstate', e => {
     if (isMobile()) {
