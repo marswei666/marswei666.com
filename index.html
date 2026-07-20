@@ -5,13 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MarsWei</title>
   <meta name="description" content="MarsWei — An Earth story collector. Writing about travel, books, and society." />
+  <meta name="theme-color" content="#c9b99a" />
+  <meta property="og:title" content="MarsWei" />
+  <meta property="og:description" content="An Earth story collector. Writing about travel, books, society, and Kiro Book." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="image/marswei-avatar.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/style.css?v=14" />
+  <link rel="stylesheet" href="css/style.css?v=16" />
 </head>
 <body>
 
@@ -22,22 +28,22 @@
       <span class="player-track-name" id="playerTrackName">Energy Flow</span>
     </div>
     <div class="player-controls">
-      <button class="player-btn" id="playerPrev" title="Previous">&#9664;&#9664;</button>
-      <button class="player-btn player-btn-play" id="playerPlay" title="Play / Pause">&#9654;</button>
-      <button class="player-btn" id="playerNext" title="Next">&#9654;&#9654;</button>
+      <button class="player-btn" id="playerPrev" type="button" title="Previous" aria-label="Previous track">&#9664;&#9664;</button>
+      <button class="player-btn player-btn-play" id="playerPlay" type="button" title="Play / Pause" aria-label="Play music" aria-pressed="false">&#9654;</button>
+      <button class="player-btn" id="playerNext" type="button" title="Next" aria-label="Next track">&#9654;&#9654;</button>
     </div>
     <div class="player-progress-area">
       <span class="player-time" id="playerCurrentTime">0:00</span>
-      <div class="player-progress-bar" id="playerProgressBar">
+      <div class="player-progress-bar" id="playerProgressBar" role="slider" tabindex="0" aria-label="Track progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="player-progress-fill" id="playerProgressFill"></div>
       </div>
       <span class="player-time" id="playerDuration">0:00</span>
     </div>
-    <button class="player-mode-btn" id="playerMode" title="Loop">↻</button>
+    <button class="player-mode-btn" id="playerMode" type="button" title="Loop All" aria-label="Playback mode: loop all">↻</button>
 
     <!-- Playlist dropdown -->
     <div class="player-playlist-wrap" id="playerPlaylistWrap">
-      <button class="player-playlist-btn" id="playerPlaylistBtn" title="Playlist">
+      <button class="player-playlist-btn" id="playerPlaylistBtn" type="button" title="Playlist" aria-label="Open playlist" aria-expanded="false" aria-controls="playerPlaylist">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
@@ -45,7 +51,7 @@
           <circle cx="20" cy="18" r="2"/>
         </svg>
       </button>
-      <ul class="player-playlist" id="playerPlaylist"></ul>
+      <ul class="player-playlist" id="playerPlaylist" aria-label="Music playlist"></ul>
     </div>
   </div>
 
@@ -57,14 +63,14 @@
     <div class="sidebar-header">
       <div class="site-name"><img class="marswei-avatar" src="image/marswei-avatar.png" alt="" /> MarsWei</div>
 
-      <div class="bio-tagline">An Earth story collector</div>
+      <div class="bio-tagline" data-i18n="bio.tagline">An Earth story collector</div>
 
       <div class="bio-lines">
-        <span class="bio-line">Four languages: Chinese · English · Français · 日本語</span>
-        <span class="bio-line">7 years studying in Beijing &amp; Paris</span>
-        <span class="bio-line">8 years at Huawei &amp; Tencent in Shenzhen</span>
-        <span class="bio-line">3 years traversing the globe</span>
-        <span class="bio-line"><span class="num">1</span> lifetime driven by curiosity &amp; love</span>
+        <span class="bio-line" data-i18n="bio.languages">Four languages: Chinese · English · Français · 日本語</span>
+        <span class="bio-line" data-i18n="bio.study">7 years studying in Beijing &amp; Paris</span>
+        <span class="bio-line" data-i18n="bio.work">8 years at Huawei &amp; Tencent in Shenzhen</span>
+        <span class="bio-line" data-i18n="bio.travel">3 years traversing the globe</span>
+        <span class="bio-line" data-i18n="bio.life"><span class="num">1</span> lifetime driven by curiosity &amp; love</span>
       </div>
 
       <a href="mailto:marswei20@gmail.com" class="social-link">
@@ -84,11 +90,11 @@
 
     <!-- Article list -->
     <nav class="sidebar-articles">
-      <div class="articles-section-label"><img class="section-label-icon" src="image/kiro-app-icon.png" alt="" /> App</div>
+      <div class="articles-section-label"><img class="section-label-icon" src="image/kiro-app-icon.png" alt="" /> <span data-i18n="nav.appLabel">App</span></div>
 
       <div class="article-item active" data-article="app-download">
-        <div class="article-item-title">Kiro Book — Global Tag App</div>
-        <div class="article-item-date">iOS · Google Play · China APK</div>
+        <div class="article-item-title" data-i18n="nav.appTitle">Kiro Book — Global Tag App</div>
+        <div class="article-item-date" data-i18n="nav.appPlatforms">iOS · Google Play · China Android</div>
       </div>
 
       <div class="articles-section-label writing-label"><span class="section-label-icon writing-icon" aria-hidden="true">✎</span> Writing</div>
@@ -199,61 +205,60 @@
 
   <!-- ===== Main Content ===== -->
   <main class="main">
-    <button class="back-btn" id="backBtn">← Writing</button>
+    <button class="back-btn" id="backBtn" type="button">← Writing</button>
 
     <!-- Kiro Book Download -->
-    <article class="article-view app-download-view active" data-article="app-download">
+    <article class="article-view app-download-view active" data-article="app-download" data-i18n-region="appDownload">
       <div class="app-download-hero">
         <div>
           <div class="article-view-meta">
-            <span class="article-view-tag">APP</span>
-            <span class="article-view-date">Version 1.1.2</span>
+            <span class="article-view-tag" data-i18n="app.tag">APP</span>
           </div>
           <div class="app-title-row">
             <img class="kiro-app-icon" src="image/kiro-app-icon.png" alt="Kiro Book app icon" />
             <h1>Kiro Book</h1>
           </div>
-          <p class="article-lead">
+          <p class="article-lead" data-i18n="app.lead">
             A travel journal for cafes, bookstores, museums, galleries, select shops, bars, and the small places worth remembering.
           </p>
           <div class="app-download-actions">
             <a class="app-download-btn primary" href="https://apps.apple.com/us/app/kiro-book/id6760916222" target="_blank" rel="noopener">App Store</a>
-            <a class="app-download-btn" href="https://play.google.com/store/apps/details?id=com.minami_studio.kiro" target="_blank" rel="noopener">Google Play Closed Test</a>
-            <a class="app-download-btn" href="downloads/KiroBook-release-1.1.2.apk" download>中国区安卓</a>
+            <a class="app-download-btn" href="https://play.google.com/store/apps/details?id=com.minami_studio.kiro" target="_blank" rel="noopener" data-i18n="app.googlePlayButton">Google Play Closed Test</a>
+            <a class="app-download-btn" href="downloads/KiroBook-release-1.1.2.apk" download data-i18n="app.chinaAndroidButton">China Android</a>
           </div>
         </div>
         <div class="screenshot-stack" aria-label="Kiro Book screenshots preview">
           <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-1.jpg" alt="Kiro Book map screen" />
-          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-2.jpg" alt="Kiro Book Asia map screen" />
           <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-3.jpg" alt="Kiro Book Europe map screen" />
+          <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-2.jpg" alt="Kiro Book Asia map screen" />
         </div>
       </div>
 
       <div class="app-download-grid">
         <section class="app-download-card">
           <h2>App Store</h2>
-          <p>For iPhone and iPad users. Scan the QR code or click the button to open the App Store page.</p>
+          <p data-i18n="app.appStoreDesc">For iPhone users. Scan the QR code or click the button to open the App Store page.</p>
           <img class="app-qr" src="image/kiro-app-store-qr.png" alt="App Store QR" />
-          <a class="app-card-link" href="https://apps.apple.com/us/app/kiro-book/id6760916222" target="_blank" rel="noopener">Open App Store</a>
+          <a class="app-card-link" href="https://apps.apple.com/us/app/kiro-book/id6760916222" target="_blank" rel="noopener" data-i18n="app.openAppStore">Open App Store</a>
         </section>
 
         <section class="app-download-card">
           <h2>Google Play</h2>
-          <p>Closed Test only.<br>Scan or open the test link.<br>Contact the developer for access.</p>
+          <p data-i18n="app.googlePlayDesc">Android user? Join Closed Testing!<br>Email your Google account to<br><a href="mailto:marswei20@gmail.com">marswei20@gmail.com</a> for access.</p>
           <img class="app-qr" src="image/kiro-google-play-qr.png" alt="Google Play Closed Test QR" />
-          <a class="app-card-link" href="https://play.google.com/store/apps/details?id=com.minami_studio.kiro" target="_blank" rel="noopener">Open Test Link</a>
+          <a class="app-card-link" href="https://play.google.com/store/apps/details?id=com.minami_studio.kiro" target="_blank" rel="noopener" data-i18n="app.openTestLink">Open Test Link</a>
         </section>
 
         <section class="app-download-card">
-          <h2>中国区安卓</h2>
-          <p>中国区 Android 用户可直接下载。<br>下载后打开 APK 完成安装。<br>如系统提示，请允许安装未知来源应用。</p>
+          <h2 data-i18n="app.chinaAndroidTitle">China Android</h2>
+          <p data-i18n="app.chinaAndroidDesc">China Android users: download APK.<br>Open it to install.<br>Allow unknown sources if prompted.</p>
           <img class="app-qr" src="image/kiro-apk-qr.png" alt="Android APK QR" />
-          <a class="app-card-link" href="downloads/KiroBook-release-1.1.2.apk" download>下载 APK</a>
+          <a class="app-card-link" href="downloads/KiroBook-release-1.1.2.apk" download data-i18n="app.downloadApk">Download APK</a>
         </section>
       </div>
 
       <section class="screenshot-section" aria-labelledby="apple-screenshots-title">
-        <h2 id="apple-screenshots-title">Apple App Screenshots</h2>
+        <h2 id="apple-screenshots-title" data-i18n="app.appleScreenshots">Apple App Screenshots</h2>
         <div class="screenshot-strip" aria-label="Kiro Book Apple screenshots from 1 to 8">
           <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-8.jpg" alt="Kiro Book Apple screenshot 8" />
           <img class="zoomable-screenshot" tabindex="0" src="image/kiro-apple-screenshot-1.jpg" alt="Kiro Book Apple screenshot 1" />
@@ -267,7 +272,7 @@
       </section>
 
       <section class="screenshot-section" aria-labelledby="screenshots-title">
-        <h2 id="screenshots-title">Google App Screenshots</h2>
+        <h2 id="screenshots-title" data-i18n="app.googleScreenshots">Google App Screenshots</h2>
         <div class="screenshot-strip" aria-label="Kiro Book screenshots from 1 to 9">
           <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-1.jpg" alt="Kiro Book screenshot 1" />
           <img class="zoomable-screenshot" tabindex="0" src="image/kiro-screenshot-2.jpg" alt="Kiro Book screenshot 2" />
@@ -282,41 +287,41 @@
       </section>
 
       <section class="compliance-section" aria-labelledby="business-support-title">
-        <h2 id="business-support-title">Business &amp; Support</h2>
+        <h2 id="business-support-title" data-i18n="app.businessSupport">Business &amp; Support</h2>
         <div class="compliance-grid">
           <article>
-            <h3>Support</h3>
-            <p>For product support, billing questions, Google Play test access, or refund requests, contact <a href="mailto:marswei20@gmail.com">marswei20@gmail.com</a>.</p>
+            <h3 data-i18n="app.supportTitle">Support</h3>
+            <p data-i18n="app.supportDesc">For product support, billing questions, Google Play test access, or refund requests, contact <a href="mailto:marswei20@gmail.com">marswei20@gmail.com</a>.</p>
           </article>
           <article>
-            <h3>Product &amp; Pricing</h3>
-            <p>Kiro Book is a mobile app for travel and place journaling. The app can be downloaded from App Store, Google Play Closed Test, or China-region APK. Any paid plan or premium feature is shown clearly inside the app before purchase.</p>
+            <h3 data-i18n="app.pricingTitle">Product &amp; Pricing</h3>
+            <p data-i18n="app.pricingDesc">Kiro Book is a mobile app for travel and place journaling. The app can be downloaded from App Store, Google Play Closed Test, or China-region APK. Any paid plan or premium feature is shown clearly inside the app before purchase.</p>
           </article>
           <article>
-            <h3>Privacy</h3>
-            <p>Kiro Book is designed for personal journaling. Your entries, photos, places, and notes are treated as private user content. Payment details for the direct Android channel are processed by Stripe and are not stored on this website.</p>
+            <h3 data-i18n="app.privacyTitle">Privacy</h3>
+            <p data-i18n="app.privacyDesc">Kiro Book is designed for personal journaling. Your entries, photos, places, and notes are treated as private user content. Payment details for the direct Android channel are processed by Stripe and are not stored on this website.</p>
           </article>
           <article>
-            <h3>Terms</h3>
-            <p>Use Kiro Book for lawful personal record keeping. You are responsible for the content you add and for keeping your own backups when needed.</p>
+            <h3 data-i18n="app.termsTitle">Terms</h3>
+            <p data-i18n="app.termsDesc">Use Kiro Book for lawful personal record keeping. You are responsible for the content you add and for keeping your own backups when needed.</p>
           </article>
           <article>
-            <h3>Refunds &amp; Cancellation</h3>
-            <p>For App Store or Google Play purchases, refunds and cancellations follow the store&apos;s own policies. For direct Android purchases processed by Stripe, contact support within 14 days. Refund requests are reviewed case by case and approved refunds are returned to the original payment method.</p>
+            <h3 data-i18n="app.refundsTitle">Refunds &amp; Cancellation</h3>
+            <p data-i18n="app.refundsDesc">For App Store or Google Play purchases, refunds and cancellations follow the store&apos;s own policies. For direct Android purchases processed by Stripe, contact support within 14 days. Refund requests are reviewed case by case and approved refunds are returned to the original payment method.</p>
           </article>
         </div>
       </section>
 
       <div class="app-info-grid">
         <section class="app-story-panel">
-          <h2>Story</h2>
-          <p>
+          <h2 data-i18n="app.storyTitle">Story</h2>
+          <p data-i18n="app.storyP1">
             Kiro Book was built by a traveler who speaks four languages, Chinese · English · Français · 日本語, reads across cultures, and has spent three years moving through the world. It comes from a love for Earth itself: the cities, books, cafes, museums, streets, and people that make each journey worth remembering.
           </p>
-          <p>
+          <p data-i18n="app.storyP2">
             Before the journey, I studied in Beijing and Paris, then worked in China&apos;s internet industry at Huawei and Tencent. Those years taught me to look at systems, products, and people with patience: how cities grow, how tools shape daily life, and how small personal records can become a map of memory.
           </p>
-          <p>
+          <p data-i18n="app.storyP3">
             My curiosity has always moved across disciplines: society, religion, philosophy, probability, film, music, books, and nature. Kiro Book is a quiet attempt to bring those interests back to the ground, one place at a time.
           </p>
         </section>
@@ -1469,7 +1474,7 @@ And waiting 17 years until find the one</em></blockquote>
 
   </div><!-- /.content-area -->
 
-  <script src="js/main.js?v=13"></script>
+  <script src="js/main.js?v=17"></script>
   <script>
     (function() {
       const GET_STATS_URL = 'https://wanderlog-stats-d4fnpamqed206c68-1445354193.ap-shanghai.app.tcloudbase.com/getStats';

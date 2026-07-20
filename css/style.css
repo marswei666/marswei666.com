@@ -42,6 +42,11 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 /* ===== Sidebar ===== */
 .sidebar {
   width: var(--sidebar-w);
@@ -166,6 +171,9 @@ a { color: inherit; text-decoration: none; }
   border-left: 2px solid transparent;
   transition: all var(--transition);
 }
+.article-item:focus-visible {
+  background: var(--surface);
+}
 .article-item:hover {
   background: var(--surface);
   border-left-color: var(--accent-dim);
@@ -254,6 +262,12 @@ a { color: inherit; text-decoration: none; }
   border-left: 2px solid var(--accent-dim);
   padding-left: 1.25rem;
   margin-bottom: 2.5rem;
+}
+[dir="rtl"] .article-lead {
+  border-left: 0;
+  border-right: 2px solid var(--accent-dim);
+  padding-left: 0;
+  padding-right: 1.25rem;
 }
 
 .article-body {
@@ -358,6 +372,7 @@ a { color: inherit; text-decoration: none; }
   transition: height 0.15s;
 }
 .player-progress-bar:hover { height: 5px; }
+.player-progress-bar:focus-visible { height: 5px; }
 
 .player-progress-fill {
   height: 100%;
@@ -458,6 +473,7 @@ a { color: inherit; text-decoration: none; }
   transition: background var(--transition), color var(--transition);
 }
 .player-playlist li:hover { background: var(--sidebar-bg); color: var(--ink); }
+.player-playlist li:focus-visible { background: var(--sidebar-bg); color: var(--ink); }
 .player-playlist li.active { color: var(--accent); font-weight: 500; }
 
 /* ===== Responsive ===== */
@@ -523,6 +539,10 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+[dir="rtl"] .app-title-row {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 .app-title-row h1 { margin-bottom: 0; }
 .kiro-app-icon {
@@ -635,22 +655,34 @@ a { color: inherit; text-decoration: none; }
   border-radius: 8px;
   padding: 1.15rem;
 }
+.app-download-card {
+  display: flex;
+  flex-direction: column;
+}
 .app-download-card h2, .app-info-grid h2 {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   color: var(--ink);
   margin: 0 0 0.45rem;
 }
+[dir="rtl"] .app-download-card,
+[dir="rtl"] .app-info-grid,
+[dir="rtl"] .compliance-section {
+  text-align: right;
+}
 .app-download-card p, .app-info-grid li, .app-info-grid p {
   color: var(--ink-soft);
   font-size: 0.88rem;
   line-height: 1.75;
 }
+.app-download-card > p {
+  min-height: 6.2rem;
+}
 .app-qr {
   width: 168px;
   height: 168px;
   display: block;
-  margin: 1rem auto;
+  margin: 0 auto 1rem;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: #f7f1e6;
@@ -670,6 +702,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 768px) {
   .app-download-view { max-width: none; }
   .app-download-hero, .app-download-grid, .app-info-grid { grid-template-columns: 1fr; }
+  .app-download-card > p { min-height: 0; }
   .app-phone-preview { width: min(230px, 100%); margin: 0 auto; }
   .app-download-actions { flex-direction: column; }
   .app-download-btn { width: 100%; }
