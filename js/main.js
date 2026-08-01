@@ -342,7 +342,6 @@ function initLocalizedCopy() {
   });
 
   document.documentElement.lang = locale;
-  document.querySelector('.sidebar-header')?.setAttribute('dir', direction);
   document.querySelector('[data-i18n-region="appDownload"]')?.setAttribute('dir', direction);
 }
 
